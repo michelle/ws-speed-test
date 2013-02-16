@@ -1390,8 +1390,8 @@ util.inherits(Socket, EventEmitter);
 
 /** Check in with ID or get one from server. */
 Socket.prototype.start = function() {  
-  //this._startXhrStream();
-  this._startWebSocket();
+  this._startXhrStream();
+  //this._startWebSocket();
 };
 
 
