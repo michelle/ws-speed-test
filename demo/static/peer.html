@@ -1,0 +1,41 @@
+<!DOCTYPE HTML> 
+<html lang="en"> 
+<head>
+<title>Peer Test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Language" content="en-us"> 
+<meta name="description" content=""> 
+<meta name="keywords" content=""> 
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+<script type="text/javascript" src="/peer.js"></script>
+<script>
+$(document).ready(function() {
+  originator = new Peer('mb', { key: '47etzdhjw597ldi', debug: true });
+  originator.on('open', function(id) {
+    console.log(id);
+  });
+  originator.on('error', function(msg) {
+    console.log(msg);
+  });
+  originator.on('connection', function(connection) {
+    x = connection;
+    console.log('connection');
+
+    connection.on('open', function() {
+      connection.send('What is going on?');
+    });
+    connection.on('data', function(data) {
+      console.log(data);
+    });
+  });
+});
+
+</script>
+
+</head> 
+ 
+<body> 
+  This is a P2P peer.
+</body> 
+</html> 

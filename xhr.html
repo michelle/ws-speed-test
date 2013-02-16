@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script>
+      window.onload = function() {
+        var url = 'http://0.peerjs.com:9005/xhr-' + Math.random() + '/id';
+        var start = new Date();
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.addEventListener('load', function() {
+          document.getElementById('time').innerHTML = new Date() - start;
+          document.getElementById('url').innerHTML = url;
+        }, false);
+        xhr.send(null);
+      };
+    </script>
+    <style>
+      body {
+        font-size: 45px;
+        color: #454545;
+      }
+      #url {
+        font-weight: 700;
+      }
+      #time {
+        color: #c12d2d;
+        font-weight: 700;
+      }
+      .note {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    Time: <span id="time"></span> ms<br>
+    <span class="note">Sent XHR GET request to <span id="url"></span></span>
+    <br>
+    <span class="note">CORS OPTIONS request is usually cached based on request URL and would cause
+      another RTT the first time a URL is used.</span>
+  </body>
+</html>

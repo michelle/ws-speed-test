@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script>
+      window.onload = function() {
+        var url = 'ws://0.peerjs.com:9005/peerjs?key=asdf&id=asdf&token=asdf';
+        var start = new Date();
+        var socket = new WebSocket(url);
+        socket.onopen = function() {
+          document.getElementById('time').innerHTML = new Date() - start;
+          document.getElementById('url').innerHTML = url;
+        }
+      };
+    </script>
+    <style>
+      body {
+        font-size: 45px;
+        color: #454545;
+      }
+      #url {
+        font-weight: 700;
+      }
+      #time {
+        color: #c12d2d;
+        font-weight: 700;
+      }
+      .note {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    Time: <span id="time"></span> ms<br>
+    <span class="note">Opened a WebSocket with <span id="url"></span></span>
+  </body>
+</html>
