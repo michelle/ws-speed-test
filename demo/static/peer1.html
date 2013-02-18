@@ -16,13 +16,13 @@ $(document).ready(function() {
 
     var start = new Date();
 
-    peer = new Peer('p3', { key: '47etzdhjw597ldi', debug: true });
+    peer = new Peer({ key: '47etzdhjw597ldi', debug: true });
     peer.on('open', function() {
       console.log(new Date() - start);
     });
 
     var conn_start = new Date();
-    connection = peer.connect(source)
+    connection = peer.connect(source, { serialization: 'none' });
 
     connection.on('open', function() {
       console.log(new Date() - conn_start);
